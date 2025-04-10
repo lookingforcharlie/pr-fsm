@@ -16,6 +16,15 @@ class TestStandardFSM:
     def test_mod_three_standard_3(self):
         assert mod_three_standard("1111") == 0
 
+    def test_empty_string(self):
+        """Edge case: empty input string"""
+        assert mod_three_standard("") == 0
+
+    def test_invalid_character(self):
+        """Edge case: invalid character in the input string`"""
+        with pytest.raises(ValueError):
+            mod_three_standard("11021")  # Contains '2'
+
 
 class TestAdvancedFSM:
     """Tests for the advanced finite state machine (mod_three_advanced)."""
@@ -28,3 +37,12 @@ class TestAdvancedFSM:
 
     def test_mod_three_advanced_3(self):
         assert mod_three_advanced("1111") == 0
+
+    def test_empty_string(self):
+        """Edge case: Test advanced FSM with an empty input string."""
+        assert mod_three_advanced("") == 0
+
+    def test_invalid_character(self):
+        """Edge case: Test advanced FSM with an invalid character in the input string."""
+        with pytest.raises(ValueError):
+            mod_three_advanced("1x01")  # Contains 'x'
