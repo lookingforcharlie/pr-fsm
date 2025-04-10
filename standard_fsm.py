@@ -28,6 +28,8 @@ def mod_three_standard(binary_str: str) -> int:
     state = "S0"  # Initial state
 
     for bit in binary_str:
+        if bit not in ("0", "1"):
+            raise ValueError(f"Invalid character '{bit}' found in binary string.")
         state = transition[state][bit]
 
     return output[state]
